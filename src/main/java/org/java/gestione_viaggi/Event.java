@@ -94,6 +94,6 @@ public void noReservations(int numReservedSeats){
 
     @Override
     public String toString() {
-        return "L'evento" + title + "si svolgerà in data " + date.format(DateTimeFormatter.ISO_LOCAL_DATE);
+        return "l'evento: " + title + " che si svolgerà in data " + date.format(DateTimeFormatter.ISO_LOCAL_DATE);
     }
 }

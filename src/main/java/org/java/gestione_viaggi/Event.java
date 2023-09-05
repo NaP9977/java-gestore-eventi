@@ -1,6 +1,7 @@
 package org.java.gestione_viaggi;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 //MILESTONE 1
 //La consegna è di creare una classe Evento che abbia le seguenti proprietà:
@@ -37,6 +38,7 @@ public class Event {
         this.date = date;
         isValidNum(numSeats);
         this.numSeats = numSeats;
+        noReservations(numReservedSeats);
         this.numReservedSeats = 0;
     }
 
@@ -63,12 +65,22 @@ public class Event {
     public int getNumReservedSeats() {
         return numReservedSeats;
     }
+public int reservation (){
+        return numReservedSeats++;
+}
 
+public int cancellation (){
+        return numReservedSeats--;
+}
 
-
-
-
-
+public int minusSeats(){
+        return numSeats--;
+}
+public void noReservations(int numReservedSeats){
+        if(numReservedSeats == 0){
+            throw new RuntimeException();
+        }
+}
     private void isValidNum(int numSeats){
         if(numSeats < 0){
             throw new RuntimeException();
@@ -80,5 +92,8 @@ public class Event {
         }
     }
 
-
+    @Override
+    public String toString() {
+        return "L'evento" + title + "si svolgerà in data " + date.format(DateTimeFormatter.ISO_LOCAL_DATE);
+    }
 }

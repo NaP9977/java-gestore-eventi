@@ -38,7 +38,15 @@ public class Main {
                 }
                 System.out.println("Hai prenotato " + event.getNumReservedSeats() + " per " + event.toString());
                 System.out.println("Posti ancora disponibili +" + event.getNumSeats());
-
+                System.out.println("Vuoi continuare?(s/n)");
+                String risposta1 = scan.nextLine().toLowerCase();
+                if(risposta1.equalsIgnoreCase("s")){
+                    doYouWantTo = true;
+                }
+                else if(risposta1.equalsIgnoreCase("n")){
+                    System.out.print("Va bene, buon divertimento!");
+                    doYouWantTo = false;
+                }
             }
 
             catch (RuntimeException e) {

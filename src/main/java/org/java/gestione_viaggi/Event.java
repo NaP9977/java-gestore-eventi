@@ -66,16 +66,16 @@ public class Event {
         return numReservedSeats;
     }
 public int reservation (){
+        numSeats --;
         return numReservedSeats++;
 }
 
 public int cancellation (){
+        numSeats++;
         return numReservedSeats--;
 }
 
-public int minusSeats(){
-        return numSeats--;
-}
+
 public void noReservations(int numReservedSeats){
         if(numReservedSeats == 0){
             throw new RuntimeException();

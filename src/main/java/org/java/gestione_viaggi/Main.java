@@ -26,29 +26,36 @@ public class Main {
             doYouWantTo = false;
         }
 
+
+
         while (doYouWantTo) {
             try {
                 System.out.println("Quanti posti vuoi prenotare?");
                 int reservedSeats = Integer.parseInt(scan.nextLine());
                 Event event = new Event("Concerto di natale", 700, reservedSeats, LocalDate.of(2023, 12, 25));
+
                 for (int i = 0; i < reservedSeats; i++) {
                     event.reservation();
-                    event.minusSeats();
-                    continue;
+
                 }
-                System.out.println("Hai prenotato " + event.getNumReservedSeats() + " per " + event.toString());
-                System.out.println("Posti ancora disponibili +" + event.getNumSeats());
-                System.out.println("Vuoi continuare?(s/n)");
+                System.out.println("Vuoi cancellare la prenotazione?(s/n) E se si di quanti posti?");
                 String risposta1 = scan.nextLine().toLowerCase();
-                if(risposta1.equalsIgnoreCase("s")){
+
+                if (risposta1.equalsIgnoreCase("s")) {
                     doYouWantTo = true;
-                }
-                else if(risposta1.equalsIgnoreCase("n")){
+                    int canceleadSeats = Integer.parseInt(scan.nextLine());
+                    for (int i = 0; i < canceleadSeats; i++) {
+                        event.cancellation();
+                    }
+                } else if (risposta1.equalsIgnoreCase("n")) {
                     System.out.print("Va bene, buon divertimento!");
                     doYouWantTo = false;
                 }
-            }
 
+                System.out.println("Hai prenotato " + event.getNumReservedSeats() + " per " + event.toString());
+                System.out.println("Posti ancora disponibili +" + event.getNumSeats());
+
+            }
             catch (RuntimeException e) {
                 System.out.println("Dati inseriti non validi");
             }

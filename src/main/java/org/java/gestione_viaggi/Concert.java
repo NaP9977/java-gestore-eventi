@@ -3,8 +3,6 @@ package org.java.gestione_viaggi;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.Year;
-import java.time.format.DateTimeFormatter;
 
 //MILESTONE 3
 //Creare una classe Concerto che estende Evento, che ha anche gli attributi :
@@ -44,4 +42,4 @@ public class Concert extends Event {
 
 }
 
-}
+

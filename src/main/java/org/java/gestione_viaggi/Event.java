@@ -66,6 +66,8 @@ public class Event {
         return numReservedSeats;
     }
 public int reservation (){
+        if(numSeats <= 0 || numReservedSeats > numSeats)
+            throw new RuntimeException();
         numSeats --;
         return numReservedSeats++;
 }
@@ -82,7 +84,7 @@ public void noReservations(int numReservedSeats){
         }
 }
     private void isValidNum(int numSeats){
-        if(numSeats < 0){
+        if(numSeats < 0  ){
             throw new RuntimeException();
         }
     }

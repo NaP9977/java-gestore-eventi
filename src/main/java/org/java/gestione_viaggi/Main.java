@@ -1,6 +1,8 @@
 package org.java.gestione_viaggi;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 //1. Creare una classe Main di test, in cui si chiede all’utente di
@@ -33,6 +35,7 @@ public class Main {
                 System.out.println("Quanti posti vuoi prenotare?");
                 int reservedSeats = Integer.parseInt(scan.nextLine());
                 Event event = new Event("Concerto di natale", 700, reservedSeats, LocalDate.of(2023, 12, 25));
+                Concert concert = new Concert("Concerto di natale", 700, reservedSeats, LocalDate.of(2023, 12, 25), LocalTime.parse("20:00"), new BigDecimal("50.00"));
 
                 for (int i = 0; i < reservedSeats; i++) {
                     event.reservation();
@@ -48,18 +51,19 @@ public class Main {
                         event.cancellation();
                     }
                 } else if (risposta1.equalsIgnoreCase("n")) {
-                    System.out.print("Va bene, buon divertimento!");
+                    System.out.println("Va bene, buon divertimento!");
                     doYouWantTo = false;
                 }
 
                 System.out.println("Hai prenotato " + event.getNumReservedSeats() + " per " + event.toString());
+
+                System.out.println(concert.toString());
                 System.out.println("Posti ancora disponibili +" + event.getNumSeats());
 
             }
             catch (RuntimeException e) {
                 System.out.println("Dati inseriti non validi");
             }
-
 
         }
         scan.close();

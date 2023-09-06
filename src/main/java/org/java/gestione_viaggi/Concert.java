@@ -20,6 +20,7 @@ public class Concert extends Event {
     public Concert(String title, int numSeats, int numReservedSeats, LocalDate date, LocalTime schedule, BigDecimal price) {
         super(title, numSeats, numReservedSeats, date);
         this.schedule = schedule;
+
         this.price = price;
     }
 
@@ -39,7 +40,23 @@ public class Concert extends Event {
         this.price = price;
     }
 
+    private String getFormattedSchedule() {
+        return schedule.toString();
 
+    }
+
+    private LocalDate getFormattedDate(LocalDate date) {
+        return getDate();
+    }
+
+    public String getFormattedPrice() {
+        return String.format("%.2f€", price);
+    }
+
+    @Override
+    public String toString() {
+        return "data e ora: " + getFormattedDate(getDate()) + " alle " + getFormattedSchedule() +  " del " + getTitle() + " al prezzo di " + getPrice();
+    }
 }
 
 

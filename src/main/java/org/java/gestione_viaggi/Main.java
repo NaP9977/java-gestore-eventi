@@ -35,12 +35,18 @@ public class Main {
                 System.out.println("Quanti posti vuoi prenotare?");
                 int reservedSeats = Integer.parseInt(scan.nextLine());
                 Event event = new Event("Concerto di natale", 700, reservedSeats, LocalDate.of(2023, 12, 25));
+                Event event1 = new Event("Concerto capodanno", 5000, reservedSeats, LocalDate.of(2024, 01,01));
                 Concert concert = new Concert("Concerto di natale", 700, reservedSeats, LocalDate.of(2023, 12, 25), LocalTime.parse("20:00"), new BigDecimal("50.00"));
 
                 for (int i = 0; i < reservedSeats; i++) {
                     event.reservation();
-
                 }
+
+                for(int i= 0; i< reservedSeats; i++){
+                    event1.reservation();
+                }
+
+
                 System.out.println("Vuoi cancellare la prenotazione?(s/n) E se si di quanti posti?");
                 String risposta1 = scan.nextLine().toLowerCase();
 
@@ -59,7 +65,12 @@ public class Main {
 
                 System.out.println(concert.toString());
                 System.out.println("Posti ancora disponibili +" + event.getNumSeats());
-
+                EventsPLanning events = new EventsPLanning("Events Planning");
+                events.addEvent(event);
+                events.addEvent(event1);
+                System.out.print(events.toString());
+                int numEvents = events.numEvents();
+                System.out.print("il numero di eventi presente è " + numEvents);
             }
             catch (RuntimeException e) {
                 System.out.println("Dati inseriti non validi");

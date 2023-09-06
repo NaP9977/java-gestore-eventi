@@ -37,6 +37,9 @@ public class Event {
         isDateValid(date);
         this.date = date;
         isValidNum(numSeats);
+        if(numReservedSeats > numSeats){
+            throw new RuntimeException();
+        }
         this.numSeats = numSeats;
         noReservations(numReservedSeats);
         this.numReservedSeats = 0;
@@ -66,8 +69,6 @@ public class Event {
         return numReservedSeats;
     }
 public int reservation (){
-        if(numSeats <= 0 || numReservedSeats > numSeats)
-            throw new RuntimeException();
         numSeats --;
         return numReservedSeats++;
 }
@@ -84,8 +85,8 @@ public void noReservations(int numReservedSeats){
         }
 }
     private void isValidNum(int numSeats){
-        if(numSeats < 0  ){
-            throw new RuntimeException();
+        if(numSeats < 0 ){
+            throw new RuntimeException("Posti non disponibili");
         }
     }
     private void isDateValid(LocalDate date){
